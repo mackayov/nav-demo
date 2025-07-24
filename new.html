@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fancy Navigation with GIFs</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+      color: #fff;
+      background: #000;
+    }
+
+    /* FIXED NAVIGATION BAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: #ddd;
+      text-decoration: none;
+      margin: 0 30px;
+      text-align: center;
+      font-size: 15px;
+      letter-spacing: 1px;
+      transition: 0.3s ease;
+      position: relative;
+    }
+
+    nav a i {
+      display: block;
+      font-size: 28px;
+      margin-bottom: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00ffe0;
+    }
+
+    nav a:hover i {
+      transform: scale(1.2) rotate(8deg);
+    }
+
+    nav a.active {
+      color: #00ffe0;
+    }
+
+    nav a.active::after {
+      content: "";
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: #00ffe0;
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      border-radius: 5px;
+    }
+
+    /* PAGE SECTIONS */
+    section {
+      height: 100vh;
+      padding-top: 100px; /* space for navbar */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 24px;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: darken;
+      animation: fadeIn 1s ease-in-out both;
+    }
+
+    section h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+      animation: slideUp 1s ease forwards;
+    }
+
+    section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 20px auto;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+      animation: fadeIn 2s ease forwards;
+    }
+
+    /* Backgrounds: mix GIFs + static images */
+    #home { 
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+        url('https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif') no-repeat center/cover; 
+    }
+    #about { 
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+        url('https://media.giphy.com/media/3ohzdYJK1wAdPWVk88/giphy.gif') no-repeat center/cover; 
+    }
+    #services { 
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+        url('https://media.giphy.com/media/l0HlRm2C6x6tXnQfC/giphy.gif') no-repeat center/cover; 
+    }
+    #contact { 
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+        url('https://media.giphy.com/media/xUOwGojmE2Eex0m8FO/giphy.gif') no-repeat center/cover; 
+    }
+
+    /* Floating animated section icon */
+    .big-icon {
+      font-size: 90px;
+      margin-bottom: 20px;
+      animation: float 2.5s infinite ease-in-out;
+      color: #00ffe0;
+    }
+
+    /* Buttons with animated hover */
+    .btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #00ffe0;
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
+    }
+    .btn:hover {
+      background: #00bfb0;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #00ffe0, 0 0 40px #00ffe0;
+    }
+
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <a href="#home" class="active"><i class="fas fa-home"></i>Home</a>
+    <a href="#about"><i class="fas fa-user"></i>About</a>
+    <a href="#services"><i class="fas fa-cogs"></i>Services</a>
+    <a href="#contact"><i class="fas fa-envelope"></i>Contact</a>
+  </nav>
+
+  <!-- SECTIONS WITH GIF BACKGROUNDS -->
+  <section id="home">
+    <i class="fas fa-rocket big-icon"></i>
+    <h1>Welcome to the Future</h1>
+    <p>Now the background is a looping animated GIF. Scroll for more magic!</p>
+    <button class="btn">Explore</button>
+  </section>
+
+  <section id="about">
+    <i class="fas fa-users big-icon"></i>
+    <h1>About Us</h1>
+    <p>We are a creative digital team building futuristic web experiences with style.</p>
+    <button class="btn">Meet Us</button>
+  </section>
+
+  <section id="services">
+    <i class="fas fa-magic big-icon"></i>
+    <h1>Our Services</h1>
+    <p>Web design, apps, animations, and everything in between—let’s make it awesome.</p>
+    <button class="btn">See More</button>
+  </section>
+
+  <section id="contact">
+    <i class="fas fa-paper-plane big-icon"></i>
+    <h1>Contact Us</h1>
+    <p>Drop us a message anytime—we’re ready to create something amazing together.</p>
+    <button class="btn">Get in Touch</button>
+  </section>
+
+  <!-- SCROLL SPY SCRIPT -->
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120; 
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
